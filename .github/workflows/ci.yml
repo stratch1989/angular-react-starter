@@ -1,4 +1,4 @@
-name: Image_Alpine_NginX+Angular
+name: Image_Alpine_NginX
 
 on:
   push:
