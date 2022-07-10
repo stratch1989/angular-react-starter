@@ -23,14 +23,10 @@ jobs:
         with:
             node-version: ${{ matrix.node-version }}
       - run: |
-          npm ci
+          npm install
           npm run build
           npm test -- --watch=false --browsers=ChromeHeadless
         env:
           ci: true
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
+          
   #building:
