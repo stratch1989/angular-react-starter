@@ -32,3 +32,33 @@ jobs:
           npm test -- --watch=false --browsers=ChromeHeadless
         env:
           ci: true
+
+  building:
+
+    needs: ['testing']
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./angular
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - run: |
+          npm ci
+          npm run build build --prod 
+          
+      - uses: actions/checkout@v2
+      - uses: actions/docker/login@master
+        with: # Set the secret as an input
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        env: # Set the secret in the env
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Test
+        run: mvn clean verify -U  
