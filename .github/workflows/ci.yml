@@ -43,7 +43,7 @@ jobs:
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
           to: ${{ secrets.EMAIL_TO }}"
-          from: superruslan200135@gmail.com 
+          from: ${{ secrets.EMAIL_USERNAME }}
           secure: true
 
   building:
