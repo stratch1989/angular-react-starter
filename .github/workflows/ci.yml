@@ -7,6 +7,10 @@ jobs:
   
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./angular
+    
     strategy: 
         matrix:
             node-version: [8.x, 10.x, 12.x]
@@ -22,17 +26,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
             node-version: ${{ matrix.node-version }}
+            cache: 'npm'
       - run: |
           npm install
           npm run build
           npm test -- --watch=false --browsers=ChromeHeadless
         env:
           ci: true
-
-      
-
-        
-        
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
