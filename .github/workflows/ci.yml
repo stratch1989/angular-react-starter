@@ -6,10 +6,14 @@ jobs:
   testing:
   
     runs-on: ubuntu-latest
+
+    #defaults:
+    #  run:
+    #    working-directory: ./angular
     
     strategy: 
         matrix:
-            node-version: [8.x, 10.x, 12.x]
+            node-version: [8.x, 10.x, 12.x, 16.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -19,7 +23,7 @@ jobs:
         run: echo "::set-output name=date::$(date +%s)"
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
             node-version: ${{ matrix.node-version }}
             cache: 'npm'
