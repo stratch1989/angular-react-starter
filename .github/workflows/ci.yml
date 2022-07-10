@@ -42,8 +42,8 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-          to: ${{ env.GIT_COMMIT_COMMITTER_EMAIL }}"
-          from: ${{ env.GIT_COMMIT_AUTHOR }}"  
+          to: ${{ secrets.EMAIL_TO }}"
+          from: ${{ secrets.EMAIL_FROM }}" 
 
   building:
 
