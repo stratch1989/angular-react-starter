@@ -13,14 +13,10 @@ jobs:
     
     strategy: 
         matrix:
-            node-version: [16.x]
+            node-version: [10.x, 12.x, 16.x]
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +%s)"
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
