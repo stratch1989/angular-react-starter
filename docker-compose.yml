@@ -1,0 +1,7 @@
+version: '3'
+services:
+  angular-starter:
+    image: ghcr.io/stratch1989/angular-react-starter:master
+    container_name: angular
+    ports:
+      - 8080:8080
