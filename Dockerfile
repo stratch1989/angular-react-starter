@@ -1,7 +1,6 @@
-FROM alpine:3.14
+FROM nginx:1.23.0-alpine
 
-RUN apk add --no-cache --update \
-    nginx 
+RUN apk add 
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY angular /var/www/html
